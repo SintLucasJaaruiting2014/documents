@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->
-<!-- Active URL: http://localhost/sqldesigner/ -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
 <sql>
 	<datatypes db="mysql">
 		<group label="Numeric" color="rgb(238,238,170)">
@@ -38,15 +38,20 @@
 			<type label="Bit" length="0" sql="bit" quote=""/>
 		</group>
 	</datatypes>
-	<table x="670" y="270" name="user_users">
+	<table x="660" y="410" name="user_users">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="program_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="school_programs" row="id" />
+		</row>
+		<row name="year_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="school_years" row="id" />
 		</row>
 		<row name="email" null="1" autoincrement="0">
 			<datatype>VARCHAR</datatype>
@@ -56,13 +61,21 @@
 			<datatype>VARCHAR</datatype>
 			<default>NULL</default>
 		</row>
+		<row name="first_name" null="1" autoincrement="0">
+			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="last_name" null="1" autoincrement="0">
+			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
 		<key type="PRIMARY" name="">
 			<part>id</part>
 		</key>
 	</table>
 	<table x="1190" y="210" name="media_files">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="type" null="1" autoincrement="0">
@@ -77,13 +90,13 @@
 			<part>id</part>
 		</key>
 	</table>
-	<table x="580" y="630" name="school_programs">
+	<table x="900" y="300" name="school_programs">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="location_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="school_locations" row="id" />
 		</row>
@@ -95,9 +108,9 @@
 			<part>id</part>
 		</key>
 	</table>
-	<table x="830" y="760" name="school_locations">
+	<table x="900" y="420" name="school_locations">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="name" null="1" autoincrement="0">
@@ -108,41 +121,15 @@
 			<part>id</part>
 		</key>
 	</table>
-	<table x="380" y="280" name="social_profile">
+	<table x="300" y="200" name="social_profile_socialmedia">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="user_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="user_users" row="id" />
-		</row>
-		<row name="first_name" null="1" autoincrement="0">
-			<datatype>VARCHAR</datatype>
-			<default>NULL</default>
-		</row>
-		<row name="last_name" null="1" autoincrement="0">
-			<datatype>VARCHAR</datatype>
-			<default>NULL</default>
-		</row>
-		<row name="location" null="1" autoincrement="0">
-			<datatype>VARCHAR</datatype>
-			<default>NULL</default>
-		</row>
-		<key type="PRIMARY" name="">
-			<part>id</part>
-		</key>
-	</table>
-	<table x="110" y="220" name="social_profile_socialmedia">
-		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
-			<default>NULL</default>
-		</row>
-		<row name="profile_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="social_profile" row="id" />
 		</row>
 		<row name="type" null="1" autoincrement="0">
 			<datatype>VARCHAR</datatype>
@@ -156,74 +143,36 @@
 			<part>id</part>
 		</key>
 	</table>
-	<table x="1170" y="570" name="school_years">
+	<table x="900" y="560" name="school_years">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="name" null="1" autoincrement="0">
 			<datatype>VARCHAR</datatype>
 			<default>NULL</default>
 		</row>
-		<key type="PRIMARY" name="">
-			<part>id</part>
-		</key>
-	</table>
-	<table x="920" y="510" name="school_classes">
-		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+		<row name="start" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
-		<row name="program_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="school_programs" row="id" />
-		</row>
-		<row name="year_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="school_years" row="id" />
-		</row>
-		<row name="name" null="1" autoincrement="0">
-			<datatype>VARCHAR</datatype>
+		<row name="end" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<key type="PRIMARY" name="">
 			<part>id</part>
 		</key>
 	</table>
-	<table x="920" y="330" name="school_class_user">
+	<table x="300" y="400" name="portfolio_items">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="user_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="user_users" row="id" />
-		</row>
-		<row name="class_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="school_classes" row="id" />
-		</row>
-		<key type="PRIMARY" name="">
-			<part>id</part>
-		</key>
-	</table>
-	<table x="370" y="500" name="portfolio_items">
-		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
-			<default>NULL</default>
-		</row>
-		<row name="user_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="user_users" row="id" />
-		</row>
-		<row name="media_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
 		</row>
 		<row name="title" null="1" autoincrement="0">
 			<datatype>VARCHAR</datatype>
@@ -237,32 +186,13 @@
 			<part>id</part>
 		</key>
 	</table>
-	<table x="440" y="70" name="social_friends">
-		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
-			<default>NULL</default>
-		</row>
-		<row name="user_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
-			<default>NULL</default>
-			<relation table="user_users" row="id" />
-		</row>
-		<row name="friend_id" null="1" autoincrement="0">
-			<datatype>TINYINT</datatype>
-			<default>NULL</default>
-			<relation table="user_users" row="id" />
-		</row>
-		<key type="PRIMARY" name="">
-			<part>id</part>
-		</key>
-	</table>
 	<table x="920" y="100" name="media_links">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="linkeable_id" null="1" autoincrement="0">
-			<datatype>INT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="user_users" row="id" />
 		</row>
@@ -271,7 +201,7 @@
 			<default>NULL</default>
 		</row>
 		<row name="media_id" null="1" autoincrement="0">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 			<relation table="media_files" row="id" />
 			<relation table="media_videos" row="id" />
@@ -286,11 +216,97 @@
 	</table>
 	<table x="1190" y="100" name="media_videos">
 		<row name="id" null="1" autoincrement="1">
-			<datatype>TINYINT</datatype>
+			<datatype>INTEGER</datatype>
 			<default>NULL</default>
 		</row>
 		<row name="url" null="1" autoincrement="0">
 			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="320" y="720" name="profile_filters">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="label" null="1" autoincrement="0">
+			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="550" y="700" name="profile_options">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="filter_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="profile_filters" row="id" />
+		</row>
+		<row name="value" null="1" autoincrement="0">
+			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="290" y="590" name="profile_filter_user">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="user_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="user_users" row="id" />
+		</row>
+		<row name="option_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="profile_options" row="id" />
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="950" y="700" name="profile_questions">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="label" null="1" autoincrement="0">
+			<datatype>VARCHAR</datatype>
+			<default>NULL</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="740" y="700" name="profile_answer_user">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="user_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="user_users" row="id" />
+		</row>
+		<row name="question_id" null="1" autoincrement="0">
+			<datatype>INTEGER</datatype>
+			<default>NULL</default>
+			<relation table="profile_questions" row="id" />
+		</row>
+		<row name="answer" null="1" autoincrement="0">
+			<datatype>VARCHAR(300)</datatype>
 			<default>NULL</default>
 		</row>
 		<key type="PRIMARY" name="">
